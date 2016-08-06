@@ -34,7 +34,8 @@ def install(parser):
         print("An error occuried while trying access remote GitHub API, please try again.")
 
 
-def search(pattern):
+def search(parser):
+    pattern = parser.pattern
     request = requests.get("https://api.github.com/search/repositories?q=" + pattern + "+in:name&sort=stars&order=desc")
     if request.status_code == 200:
         for r in request.json()['items']:
