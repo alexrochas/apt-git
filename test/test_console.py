@@ -2,10 +2,10 @@ import os
 import unittest
 from io import StringIO
 from unittest.mock import patch
+from unittest.mock import MagicMock
 
-import mock as mock
-from httmock import urlmatch, HTTMock
 import requests
+from httmock import urlmatch, HTTMock
 
 from apt_git import console
 
@@ -41,7 +41,7 @@ class TestConsole(unittest.TestCase):
             output = " ".join(mock_stdout.getvalue().split())
             self.assertEqual(output, expected)
 
-    @patch('subprocess.call', new_callable=mock.Mock())
+    @patch('subprocess.call', new_callable=MagicMock())
     def test_should_install_repo(self, mocked_subprocess):
         with HTTMock(github_install_mock):
             console.main(['install', 'alexrochas/apt-git'])
