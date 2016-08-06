@@ -1,0 +1,11 @@
+language: python
+python:
+  - "3.4"
+# command to install dependencies
+branches:
+  only:
+    - master
+script:
+    - nosetests -v --nocapture --with-coverage --cover-package=server
+after_success:  
+    - coveralls push
