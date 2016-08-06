@@ -1,6 +1,8 @@
 # apt-git
 >Apt-get like tool for github repositories
 
+[![Build Status](https://travis-ci.org/alexrochas/apt-git.svg?branch=master)](https://travis-ci.org/alexrochas/apt-git)
+
 Apt-git exists to give final user a tool similar to apt-get. With apt-git you will be able to search and clone github projects from your terminal. 
 
 ## Installation
