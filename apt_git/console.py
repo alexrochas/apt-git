@@ -2,8 +2,10 @@ import argparse
 import requests
 import subprocess
 
+import sys
 
-def parse_args():
+
+def parse_args(to_parse_args):
     parser = argparse.ArgumentParser(
         description="apt-git is a command line interface for retrieval of projects and information about them from github")
     subparser = parser.add_subparsers(dest="command", help="commands")
@@ -11,13 +13,13 @@ def parse_args():
     search_parser.add_argument('pattern', help='pattern for search')
     clone_parser = subparser.add_parser('install')
     clone_parser.add_argument('repo', help='repo to clone in format ":owner/:repo_name"')
-    args, unkown = parser.parse_known_args()
+    args, unkown = parser.parse_known_args(to_parse_args)
     return args
 
 
-def main():
+def main(args=sys.argv[1:]):
     # https://developer.github.com/v3/search/
-    parser = parse_args()
+    parser = parse_args(args)
     command = parser.command
     commands[command](parser)
 
@@ -42,6 +44,7 @@ def search(parser):
             print(r['name'] + " - " + r['description'])
     else:
         print("An error occuried while trying access remote GitHub API, please try again.")
+
 
 commands = {
     'search': search,
