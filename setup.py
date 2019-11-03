@@ -8,7 +8,7 @@ setup(name='apt_git',
       author_email='alex.rochas@yahoo.com.br',
       license='MIT',
       packages=['apt_git'],
-      install_requires=['requests==2.10.0'],
+      install_requires=['requests==2.20.0'],
       entry_points={
           'console_scripts': ['apt-git=apt_git.console:main'],
       },
